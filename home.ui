@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../Downloads/Icons/Camera.png</normaloff>../Downloads/Icons/Camera.png</iconset>
+    <normaloff>icons/Camera.png</normaloff>icons/Camera.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">#centralwidget
@@ -102,7 +102,7 @@ padding-left:10px;
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../Downloads/PNG ICons/videocam-24px.png</pixmap>
+      <pixmap>icons/videocam-24px.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -229,7 +229,7 @@ padding-left:10px;
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../Downloads/PNG ICons/Path 10.png</pixmap>
+     <pixmap>icons/Path 10.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -248,7 +248,7 @@ padding-left:10px;
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../Downloads/PNG ICons/Path 6.png</pixmap>
+     <pixmap>icons/Path 6.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -280,7 +280,7 @@ padding-left:10px;
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../Downloads/Icons/Speaker.png</pixmap>
+     <pixmap>icons/Speaker.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
