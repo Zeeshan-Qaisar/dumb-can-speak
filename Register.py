@@ -1,6 +1,7 @@
+from login import *
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QCursor
 import pymysql
-import re
 
 class Ui_RegisterWindow(object):
 
@@ -40,75 +41,83 @@ class Ui_RegisterWindow(object):
                         self.warningbox( "Alert", "You must check terms and conditions in order to proceed" )
         else:
             self.warningbox( "Alert", "Please fill all the required fields" )
+
+    def openSignIn(self):
+        self.Window = QtWidgets.QMainWindow( )
+        self.ui = Ui_LoginWindow( )
+        self.ui.setupLoginUi( self.Window )
+        self.Window.show( )
+        MainWindow.hide( )
     def registerUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(640, 480)
         MainWindow.setStyleSheet("*{\n"
-"         background: url(C:/Users/mrzes/Downloads/images/backgrund.jpg);\n"
-"         background-repeat: no-repeat;\n"
-"          background-size: 300px 100px;\n"
-"}\n"
-"QFrame\n"
-"{\n"
-"    background:white;\n"
-"        border-radius:10px;\n"
-"\n"
-"}\n"
-"#frame_2\n"
-"{\n"
-"    background:rgba(0, 0, 0 ,0.7);\n"
-"}\n"
-"#main\n"
-"{\n"
-"    color:#005596;\n"
-"    font-size:25px;\n"
-"    font-weight:bold;\n"
-"}\n"
-"#username\n"
-"{\n"
-"    border:2px solid #AEAEAE;\n"
-"    border-radius:5px;\n"
-"    background:white;\n"
-"    font-weight:bold;\n"
-"}\n"
-"#email\n"
-"{\n"
-"    border:2px solid #AEAEAE;\n"
-"    border-radius:5px;\n"
-"    background:white;\n"
-"    font-weight:bold;\n"
-"}\n"
-"#password\n"
-"{\n"
-"    border:2px solid #AEAEAE;\n"
-"    border-radius:5px;\n"
-"    background:white;\n"
-"    font-weight:bold;\n"
-"}\n"
-"#registerButton\n"
-"{\n"
-"    font-size:18px;\n"
-"    color:white; \n"
-"    background:#005596;\n"
-"    border:none;\n"
-"    border-radius:5px;\n"
-"}\n"
-"#alreadylb\n"
-"{\n"
-"    font-size:13px;\n"
-"    margin-top:5px;\n"
-"}\n"
-"#loginlb\n"
-"{\n"
-"    color:#005596;\n"
-"    font-weight:bold;\n"
-"    text-decoration:underline;\n"
-"    margin-top:-10px;\n"
-"}\n"
-"QCheckBox\n"
-"{\n"
-"    background:white;\n"
-"}")
+        "background: url(C:/Users/mrzes/Downloads/images/backgrund.jpg);\n"
+        "background-repeat: no-repeat;\n"
+        "background-size: 300px 100px;\n"
+        "}\n"
+        "QFrame\n"
+        "{\n"
+        "    background:white;\n"
+        "        border-radius:10px;\n"
+        "\n"
+        "}\n"
+        "#frame_2\n"
+        "{\n"
+        "    background:rgba(0, 0, 0 ,0.7);\n"
+        "}\n"
+        "#main\n"
+        "{\n"
+        "    color:#005596;\n"
+        "    font-size:25px;\n"
+        "    font-weight:bold;\n"
+        "}\n"
+        "#username\n"
+        "{\n"
+        "    border:2px solid #AEAEAE;\n"
+        "    border-radius:5px;\n"
+        "    background:white;\n"
+        "    font-weight:bold;\n"
+        "}\n"
+        "#email\n"
+        "{\n"
+        "    border:2px solid #AEAEAE;\n"
+        "    border-radius:5px;\n"
+        "    background:white;\n"
+        "    font-weight:bold;\n"
+        "}\n"
+        "#password\n"
+        "{\n"
+        "    border:2px solid #AEAEAE;\n"
+        "    border-radius:5px;\n"
+        "    background:white;\n"
+        "    font-weight:bold;\n"
+        "}\n"
+        "#registerButton\n"
+        "{\n"
+        "    font-size:18px;\n"
+        "    color:white; \n"
+        "    background:#005596;\n"
+        "    border:none;\n"
+        "    border-radius:5px;\n"
+        "}\n"
+        "#alreadylb\n"
+        "{\n"
+        "    font-size:13px;\n"
+        "    margin-top:5px;\n"
+        "}\n"
+        "#loginlb\n"
+        "{\n"
+        "    color:#005596;\n"
+        "    font-weight:bold;\n"
+        "    text-decoration:underline;\n"
+        "    margin-top:5px;\n"
+        "    background:transparent;\n"
+        "}\n"
+        "QCheckBox\n"
+        "{\n"
+        "    background:white;\n"
+        "}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.frame = QtWidgets.QFrame(self.centralwidget)
@@ -132,6 +141,7 @@ class Ui_RegisterWindow(object):
         self.password.setObjectName("password")
         self.registerButton = QtWidgets.QPushButton(self.frame)
         self.registerButton.setGeometry(QtCore.QRect(40, 290, 271, 41))
+        self.registerButton.setCursor( QCursor( QtCore.Qt.PointingHandCursor ) )
         self.registerButton.setObjectName("registerButton")
         self.registerButton.clicked.connect(self.register)
         self.checkBox = QtWidgets.QCheckBox(self.frame)
@@ -140,8 +150,10 @@ class Ui_RegisterWindow(object):
         self.alreadylb = QtWidgets.QLabel(self.frame)
         self.alreadylb.setGeometry(QtCore.QRect(80, 340, 151, 21))
         self.alreadylb.setObjectName("alreadylb")
-        self.loginlb = QtWidgets.QLabel(self.frame)
+        self.loginlb = QtWidgets.QPushButton(self.frame)
         self.loginlb.setGeometry(QtCore.QRect(230, 340, 71, 20))
+        self.loginlb.clicked.connect( self.openSignIn )
+        self.loginlb.setCursor( QCursor( QtCore.Qt.PointingHandCursor ) )
         self.loginlb.setObjectName("loginlb")
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
         self.frame_2.setGeometry(QtCore.QRect(0, -20, 681, 551))
